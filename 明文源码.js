@@ -1257,20 +1257,25 @@ async function 生成配置信息(userID, hostName, sub, UA, RproxyIP, _url, env
 		}
 		
 		if ((addresses.length + addressesapi.length + addressesnotls.length + addressesnotlsapi.length + addressescsv.length) == 0){
-			// 定义 Cloudflare IP 范围的 CIDR 列表
-			let cfips = [
-				'103.21.244.0/23',
-				'104.16.0.0/13',
-				'104.24.0.0/14',
-				'172.64.0.0/14',
-				'103.21.244.0/23',
-				'104.16.0.0/14',
-				'104.24.0.0/15',
-				'141.101.64.0/19',
-				'172.64.0.0/14',
-				'188.114.96.0/21',
-				'190.93.240.0/21',
-			];
+		// 定义 Cloudflare IP 范围的 CIDR 列表
+			//
+			 let cfips = [
+			'103.21.244.0/22',
+			'103.22.200.0/22',
+			'103.31.4.0/22',
+			'104.16.0.0/13',
+			'104.24.0.0/14',
+			'108.162.192.0/18',
+			'131.0.72.0/22',
+			'141.101.64.0/18',
+			'162.158.0.0/15',
+			'172.64.0.0/13',
+			'173.245.48.0/20',
+			'188.114.96.0/20',
+			'190.93.240.0/20',
+			'197.234.240.0/22',
+			'198.41.128.0/17',
+		];
 	
 			// 生成符合给定 CIDR 范围的随机 IP 地址
 			function generateRandomIPFromCIDR(cidr) {
@@ -1838,7 +1843,7 @@ async function 整理(内容) {
 	return 地址数组;
 }
 
-async function sendMessage(type, ip, add_data = "") {
+/*async function sendMessage(type, ip, add_data = "") {
 	if (!BotToken || !ChatID) return;
 
 	try {
@@ -1863,7 +1868,7 @@ async function sendMessage(type, ip, add_data = "") {
 	} catch (error) {
 		console.error('Error sending message:', error);
 	}
-}
+}*/
 
 function isValidIPv4(address) {
 	const ipv4Regex = /^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/;
@@ -2182,3 +2187,4 @@ async function KV(request, env, txt = 'ADD.txt') {
 		});
 	}
 }
+
